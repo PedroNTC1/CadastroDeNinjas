@@ -1,6 +1,9 @@
-package dev.java.CadastrosDeNinjas;
+package dev.java.CadastrosDeNinjas.Ninjas.Controller.Service;
 
+import dev.java.CadastrosDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 //Transforma uma classe em uma entidade do banco de dados
 @Entity
@@ -11,9 +14,20 @@ public class NinjaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String nome;
+
     private String email;
+
     private int idade;
+
+    //Um ninja tem uma unica missao
+    @ManyToOne
+    @JoinColumn(name = "missoes_id")
+    private MissoesModel missoes;
+
+
+
 
 
     public NinjaModel() {
